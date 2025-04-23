@@ -1,0 +1,19 @@
+{#{% extends "base_generic.html" %}#}
+
+{% block content %}
+    <ul>
+    {% for gam in game_list %}
+        <li>{{ gam.fixture_date }}: {{ gam.home_team }} {{ gam.home_score }}-{{ gam.away_score }} {{ gam.away_team }}</li>
+    {% empty %}
+        <li>No games.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+
+
+
+{#    fixture_date = models.DateField()#}
+{#    home_team = models.CharField(max_length=50)#}
+{#    away_team = models.CharField(max_length=50)#}
+{#    home_score = models.IntegerField(default=0)#}
+{#    away_score = models.IntegerField(default=0)#}
