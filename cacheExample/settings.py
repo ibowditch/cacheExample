@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from django.conf.locale.en_AU import formats as enau_formats
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -106,13 +107,32 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'en-AU'
+TIME_ZONE = 'Australia/Sydney'
+USE_I18N =  True
+USE_L10N =  True
+USE_TZ =    False  # True
 
-USE_I18N = True
+enau_formats.TIME_FORMAT = "H:i"
+enau_formats.DATETIME_FORMAT = "j M Y H:i"
+TIME_INPUT_FORMATS = [                              # Change default order to remove seconds in first preference
+    '%H:%M',        # '14:30'
+    '%H:%M:%S',     # '14:30:59'
+    '%H:%M:%S.%f',  # '14:30:59.000200'
+]
 
-USE_TZ = True
+
+SHORT_DATE_FORMAT = 'Y-m-d'
+enau_formats.SHORT_DATETIME_FORMAT = 'd-N-Y H:i'
+DATE_FORMAT = 'Y-m-d'
+DATE_INPUT_FORMATS = [
+    '%Y-%m-%d', '%d/%m/%Y', '%m/%d/%Y', '%m/%d/%y',  '%d/%m/%y',    # '2006-10-25', '10/25/2006', '10/25/06'
+    '%b %d %Y', '%b %d, %Y',            # 'Oct 25 2006', 'Oct 25, 2006'
+    '%d %b %Y', '%d %b, %Y',            # '25 Oct 2006', '25 Oct, 2006'
+    '%B %d %Y', '%B %d, %Y',            # 'October 25 2006', 'October 25, 2006'
+    '%d %B %Y', '%d %B, %Y',            # '25 October 2006', '25 October, 2006'
+]
 
 
 # Static files (CSS, JavaScript, Images)

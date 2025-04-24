@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('games/', views.GamesList.as_view(), name='games'),
     path('games2/', views.GamesTableView.as_view(), name='games2'),
+    path('games2t/<str:team>', views.GamesTableView.as_view(), name='games2t'),
 ]
