@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'premier.apps.PremierConfig',
+    'django_tables2',
     'import_export',
 ]
 
@@ -116,6 +117,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
+
+import os
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # or any folder you like
+# STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ]
 
 STATIC_URL = 'static/'
 

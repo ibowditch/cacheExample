@@ -22,4 +22,5 @@ from premier import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('games/', views.GamesList.as_view(), name='games'),
+    path('games2/', views.GamesTableView.as_view(), name='games2'),
 ]
